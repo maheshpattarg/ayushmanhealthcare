@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Know Your Doctor</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
+
+</head>
+<body>
+  <button class="chat-btn" onclick="openChat()">💬 Chat with Us</button>
+
+  <div class="header">
+    <h1>Ayushman Health Care</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="doctor.html">Know Your Doctor</a>
+    </nav>
+  </div>
+
+  <section id="doctor">
+    <h2>Know Your Doctors</h2>
+    <img src="doctor.jpg" alt="Doctor Image" class="doctor-image">
+    <p>Dr. Sagar Sangamesh Kamble is an Ayurvedic practitioner dedicated to holistic healing.</p>
+  </section>
+
+  <section id="doctor1">
+    <img src="doctor.jpg" alt="Doctor Image" class="doctor-image">
+    <p>Dr. Chaitanya is a specialist in women's health with expertise in Gynecology.</p>
+  </section>
+
+  <!-- Chatbot Box -->
+<div class="chat-container" id="chatContainer" style="display: none;">
+  <div class="chat-header">
+      <span>Ayushman Health Care Chatbot</span>
+      <button class="close-btn" onclick="closeChat()">✖</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+      <p class="bot-message">👋 Welcome! How can I assist you today?</p>
+  </div>
+  <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+  <script src="chatbot.js"></script>
+  
+
+
+</body>
+</html>
