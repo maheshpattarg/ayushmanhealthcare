@@ -52,3 +52,17 @@ function sendMessage() {
   sendSuggested(question);
   userInput.value = "";
 }
+
+// Close chatbot when clicking outside (optional UX polish)
+window.addEventListener('click', function (e) {
+  const chatBox = document.getElementById('chatContainer');
+  const chatButton = document.querySelector('.chat-btn');
+
+  if (
+    chatBox.style.display === 'block' &&
+    !chatBox.contains(e.target) &&
+    !chatButton.contains(e.target)
+  ) {
+    closeChat();
+  }
+});
