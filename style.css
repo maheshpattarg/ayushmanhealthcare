@@ -101,6 +101,15 @@ body {
   }
 }
 
+.gallery img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;  /* Optional: controls image width on large screens */
+  display: block;
+  margin: 0 auto;     /* Center the image */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
 /* WhatsApp-like Chat Container */
 .chat-container {
   display: none;
