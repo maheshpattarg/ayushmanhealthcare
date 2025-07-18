@@ -10,38 +10,32 @@
 <body>
   
     <!-- Floating Chat Button -->
-    <button class="chat-btn" onclick="openChat()">
-        <button onclick="openChat()">Chat with us</button>
-        💬 Chat with Us
-    </button>
+    <button class="chat-btn" onclick="openChat()">💬 Chat with Us</button>
     
     <!-- Chatbot Box -->
-    <div class="chat-container" id="chatContainer" style="display: none;">
+    <div class="chat-container" id="chatContainer">
     <div class="chat-header">
         <span>Ayushman Health Care Chatbot</span>
         <button class="close-btn" onclick="closeChat()">✖</button>
     </div>
    
-
-    <!-- Suggested Questions -->     
-    <div class="suggested-questions" id="suggestedQuestions" style="display: none;">
-        <p>💡 You can ask:</p>
-        <button onclick="sendSuggested('What are the clinic timings?')">Clinic Timings</button>
-        <button onclick="sendSuggested('What is the contact number?')">Contact Number</button>
-        <button onclick="sendSuggested('Where is the clinic located?')">Clinic Location</button>
-        <button onclick="sendSuggested('Tell me about Panchakarma treatment')">Panchakarma Treatment</button>
-        <button onclick="sendSuggested('When is infertility treatment available?')">Infertility Treatment</button>
-        <button onclick="sendSuggested('When is Swarna Bindu Prashanam done?')">Swarna Bindu Prashanam</button>
-    </div>
-   
     <div class="chat-body" id="chatBody">
         <p class="bot-message">👋 Welcome! How can I assist you today?</p>
     </div>
+
+    <!-- Suggested Questions -->     
+    <div class="suggested-questions" id="suggestedQuestions">
+    <p>💡 You can ask:</p>
+    <button onclick="sendSuggested('Can I get address?')">Can I get address?</button>
+    <button onclick="sendSuggested('Can I get contact number?')">Can I get contact number?</button>
+    <button onclick="sendSuggested('What all Ayurveda treatment I get?')">What all Ayurveda treatment I get?</button>
+    </div>
+
    
-    <div class="chat-footer">
+    <!-- <div class="chat-footer">
         <input type="text" id="userInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
         <button onclick="sendMessage()">Send</button>
-    </div>   
+    </div>    -->
 </div>
 
 

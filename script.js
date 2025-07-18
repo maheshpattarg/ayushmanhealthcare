@@ -10,13 +10,3 @@ function showImage(imagePath, element) {
     img.style.maxWidth = "100%";
     element.appendChild(img);
   }
-  
-  // Function to open chatbot
-  function openChat() {
-    document.getElementById("chatBox").style.display = "block";
-  }
-  
-  // Function to close chatbot
-  function closeChat() {
-    document.getElementById("chatBox").style.display = "none";
-  }

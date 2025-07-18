@@ -19,7 +19,7 @@ body {
   margin: 0;
 }
 
-.header nav a {
+/* .header nav a {
   color: #ecf0f1;
   margin: 0 10px;
   text-decoration: none;
@@ -28,6 +28,37 @@ body {
 
 .header nav a:hover {
   text-decoration: underline;
+} */
+
+.header nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.header nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1em;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.header nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #ecf0f1;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+.header nav a:hover::after {
+  width: 100%;
 }
 
 /* Hero Section */
@@ -45,6 +76,7 @@ body {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
 
 /* Treatments Section */
 .treatments {
@@ -214,32 +246,36 @@ body {
   background-color: #1ebe5d;
 }
 
-/* Suggested Questions Styling */
-.suggested-questions {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
-  display: none; /* Ensure default hidden */
-}
-
 .suggested-questions p {
-  margin: 0 0 5px;
+  width: 100%;
+  text-align: center;
   font-weight: bold;
   color: #075e54;
+  margin: 0 0 8px;
+}
+
+/* Suggested Questions Styling */
+.suggested-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-top: 1px solid #ddd;
 }
 
 .suggested-questions button {
-  background-color: #25d366;
-  color: white;
+  background-color: #e0f7fa;
   border: none;
-  padding: 8px 12px;
-  margin: 5px;
+  color: #00796b;
+  padding: 10px 14px;
   border-radius: 20px;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 13px;
+  transition: background-color 0.2s ease;
 }
 
 .suggested-questions button:hover {
-  background-color: #1ebe5d;
+  background-color: #b2ebf2;
 }
