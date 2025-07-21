@@ -23,9 +23,9 @@ function sendSuggested(question) {
   botMessage.className = "bot-message";
 
   if (question.includes("address")) {
-    botMessage.textContent = "🏥 Clinic Address: 123 Ayurvedic Lane, Bangalore.";
+    botMessage.textContent = "🏥 Clinic Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016.";
   } else if (question.includes("contact")) {
-    botMessage.textContent = "📞 Contact Number: +91 9876543210.";
+    botMessage.textContent = "📞 Contact Number: +91 9986435750.";
   } else if (question.includes("treatment")) {
     botMessage.textContent = "🌿 We offer Panchakarma, Abhyanga, Vamana, Virechana, Sneha Basti, Janu Basti, Greeva Basti, Kati Basti, Nasya, Swarna Prashana, Rasayana & Rejuvenation Therapy";
   } else {
