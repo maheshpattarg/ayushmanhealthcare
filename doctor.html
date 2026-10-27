@@ -1,32 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayushman Health Care - Know Your Doctor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page Title -->
+  <title>Our Doctors | Ayushman Health Care Belagavi</title>
+
+  <!-- Meta SEO -->
+  <meta name="description" content="Meet our Ayurvedic doctors at Ayushman Health Care, Belagavi. Dr. Sagar Kamble and Dr. Chaitanya provide authentic Ayurvedic care including Panchakarma and holistic healing." />
+  <meta name="author" content="Ayushman Health Care" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chatbot.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW95TLH81X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DW95TLH81X');
+  </script>
+
+  <!-- ✅ AOS (Animate On Scroll) CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
 </head>
 <body>
-  <div class="header">
+  <!-- Header -->
+  <header class="header" data-aos="fade-down" data-aos-duration="800">
     <h1>Ayushman Health Care</h1>
-    <nav>
-      <a href="index.html">Home Page</a>
-      <a href="doctor.html" class="active">Know Your Doctor</a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="doctor.html" class="active" aria-current="page">Our Doctors</a></li>
+      </ul>
     </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2 data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Our Doctors</h2>
+
+    <!-- Doctor 1 -->
+    <section class="doctor-profile" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
+      <article>
+        <h3>Dr. Sagar Sangamesh Kamble</h3>
+        <img src="doctor.jpg" alt="Dr. Sagar Kamble - Chief Consultant at Ayushman Health Care" class="doctor-image" loading="lazy" decoding="async" />
+        <p>
+          Dr. Sagar Sangamesh Kamble is an Ayurvedic practitioner dedicated to guiding health through nature. 
+          He completed his UG degree from KLE University, Shri BMK Ayurveda Mahavidyalaya, Belagavi, 
+          and pursued his MD from Sri Dharmasthala Manjunatheshwar Ayurveda Mahavidyalaya, Udupi. 
+          He is currently pursuing a Ph.D from SDM College of Ayurveda, Udupi.
+        </p>
+        <p>
+          Currently, he serves as the Chief Consultant at Ayushman Health Care, Belagavi, and also works as an 
+          Assistant Professor at SBG Ayurveda Medical College, Belagavi, as well as a Consultant at SBG Ayurveda Hospital, Belagavi.
+        </p>
+      </article>
+    </section>
+
+    <!-- Doctor 2 -->
+    <section class="doctor-profile" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+      <article>
+        <h3>Dr. Chaitanya</h3>
+        <img src="akka.jpg" alt="Dr. Chaitanya - Ayurvedic Specialist in Women's Health" class="doctor-image" loading="lazy" decoding="async" />
+        <p>
+          Dr. Chaitanya is a highly skilled Ayurvedic practitioner who completed her degree from 
+          the esteemed Taranath Ayurveda Government College in Bellary.
+        </p>
+        <p>
+          With a strong background in women's health, she has gained valuable experience as a consultant 
+          in Gynecology and Obstetrics at RK Hospital, offering expert care and guidance to her patients.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Floating Chat Button (🚫 No AOS added) -->
+  <button class="chat-btn" id="chatOpenBtn">💬 Chat with Us</button>
+
+  <!-- Chatbot Box -->
+  <div class="chat-container" id="chatContainer" hidden>
+    <div class="chat-header">
+      <span>Ayushman Health Care Chatbot</span>
+      <button class="close-btn" id="chatCloseBtn" aria-label="Close chat">✖</button>
+    </div>
+    
+    <div class="chat-body" id="chatBody">
+      <p class="bot-message">👋 Welcome! How can I assist you today?</p>
+    </div>
+
+    <div class="suggested-questions" id="suggestedQuestions">
+      <p>💡 You can ask:</p>
+      <button type="button" data-question="Can I get address?">Can I get address?</button>
+      <button type="button" data-question="Can I get contact number?">Can I get contact number?</button>
+      <button type="button" data-question="What all Ayurveda treatment I get?">What all Ayurveda treatment I get?</button>
+    </div>
   </div>
 
-  <section id="doctor">
-    <h2>Know Your Doctors</h2>
-    <img src="doctor.jpg" alt="Doctor Image" class="doctor-image"> <!-- Replace with doctor image path -->
-    <p>Your consulting doctor is Dr. Sagar Sangamesh Kamble, an ayurvedic practitioner dedicated to guiding health through nature. Dr. Kamble has completed his UG degree from KLE University, Shri BMK Ayurveda Mahavidyalaya, Belagavi, and pursued his MD from Sri Dharmasthala Manjunatheshwar Ayurveda Mahavidyalaya, Udupi. He is currently pursuing a PhD from SDM College of Ayurveda, Udupi.</p>
-    <p>Currently, he serves as the Chief Consultant at Ayushman Health Care, Belagavi, and also works as an Assistant Professor at SBG Ayurveda Medical College, Belagavi, as well as a Consultant at SBG Ayurveda Hospital, Belagavi.</p>
-  </section>
+  <script src="chatbot.js" defer></script>
 
-  <section id="doctor1">
-    <img src="C:\doctor.jpg" alt="Doctor Image" class="doctor-image"> <!-- Replace with doctor image path -->
-    <p>Dr. Chaitanya is a highly skilled Ayurvedic practitioner who completed her degree from the esteemed Taranath Ayurveda Government College in Bellary.</p>
-    <p>With a strong background in women's health, she has gained valuable experience as a consultant in Gynecology and Obstetrics at RK Hospital, offering expert care and guidance to her patients.</p>
-  </section>
-  
+<!-- ✅ AOS (Animate On Scroll) JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 120,
+    easing: 'ease-in-out',
+  });
+</script>
+
+
+<!-- Small CSS tweak to prevent overflow on mobile -->
+<style>
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transform: translateX(0); /* Reset translation origin */
+  }
+  @media (max-width: 768px) {
+    [data-aos="fade-left"],
+    [data-aos="fade-right"] {
+      transform: translateY(20px); /* Slide slightly up instead of off-screen on small devices */
+    }
+  }
+</style>
+
 </body>
 </html>
