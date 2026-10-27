@@ -1,68 +1,96 @@
-function openChat() {
-  document.getElementById("chatContainer").style.display = "block";
-  showSuggestedQuestions();
-}
-
-function closeChat() {
-  document.getElementById("chatContainer").style.display = "none";
-}
-
-function showSuggestedQuestions() {
-  document.getElementById("suggestedQuestions").style.display = "flex";
-}
-
-function sendSuggested(question) {
+document.addEventListener("DOMContentLoaded", () => {
+  const chatContainer = document.getElementById("chatContainer");
+  const openBtn = document.getElementById("chatOpenBtn");
+  const closeBtn = document.getElementById("chatCloseBtn");
   const chatBody = document.getElementById("chatBody");
+  const suggestedButtons = document.querySelectorAll("#suggestedQuestions button");
 
-  const userMessage = document.createElement("div");
-  userMessage.className = "user-message";
-  userMessage.textContent = question;
-  chatBody.appendChild(userMessage);
+  // Responses dictionary
+  const responses = {
+    "address": "🏥 Clinic Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016.",
+    "contact": "📞 Contact Number: +91 9986435750.",
+    "treatment": "🌿 We offer Panchakarma, Abhyanga, Vamana, Virechana, Sneha Basti, Janu Basti, Greeva Basti, Kati Basti, Nasya, Swarna Prashana, Rasayana & Rejuvenation Therapy"
+  };
 
-  const botMessage = document.createElement("div");
-  botMessage.className = "bot-message";
+  // Open chat
+  openBtn.addEventListener("click", () => {
+    chatContainer.hidden = false;
+    // Allow the browser to apply the visible layout before starting the transition.
+    requestAnimationFrame(() => chatContainer.classList.add("show"));
+  });
 
-  if (question.includes("address")) {
-    botMessage.textContent = "🏥 Clinic Address: RTO Circle, Opposite to KSRTC Depo, Shivaji Nagar, Belagavi, Karnataka 590016.";
-  } else if (question.includes("contact")) {
-    botMessage.textContent = "📞 Contact Number: +91 9986435750.";
-  } else if (question.includes("treatment")) {
-    botMessage.textContent = "🌿 We offer Panchakarma, Abhyanga, Vamana, Virechana, Sneha Basti, Janu Basti, Greeva Basti, Kati Basti, Nasya, Swarna Prashana, Rasayana & Rejuvenation Therapy";
-  } else {
-    botMessage.textContent = "🤖 I'm not sure how to answer that yet.";
+  function closeChat() {
+    chatContainer.classList.remove("show");
+    window.setTimeout(() => {
+      if (!chatContainer.classList.contains("show")) {
+        chatContainer.hidden = true;
+      }
+    }, 300);
   }
 
-  chatBody.appendChild(botMessage);
-  chatBody.scrollTop = chatBody.scrollHeight;
-
-  showSuggestedQuestions(); // Show bubbles again
-}
-
-function handleKeyPress(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-}
-
-function sendMessage() {
-  const userInput = document.getElementById("userInput");
-  const question = userInput.value.trim();
-  if (question === "") return;
-
-  sendSuggested(question);
-  userInput.value = "";
-}
-
-// Close chatbot when clicking outside (optional UX polish)
-window.addEventListener('click', function (e) {
-  const chatBox = document.getElementById('chatContainer');
-  const chatButton = document.querySelector('.chat-btn');
-
-  if (
-    chatBox.style.display === 'block' &&
-    !chatBox.contains(e.target) &&
-    !chatButton.contains(e.target)
-  ) {
+  // Close chat
+  closeBtn.addEventListener("click", () => {
     closeChat();
+  });
+
+  // Handle suggested question clicks
+  suggestedButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      // Remove highlight from all
+      suggestedButtons.forEach(b => b.classList.remove("active-question"));
+      // Highlight the clicked one
+      button.classList.add("active-question");
+
+      handleUserMessage(button.dataset.question);
+    });
+  });
+
+  // Handle sending user message + bot reply
+  function handleUserMessage(question) {
+    // Add user message
+    const userMessage = document.createElement("div");
+    userMessage.className = "user-message";
+    userMessage.textContent = question;
+    chatBody.appendChild(userMessage);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Typing indicator
+    const typingEl = document.createElement("div");
+    typingEl.className = "bot-message typing-indicator";
+    typingEl.textContent = "💬 Typing...";
+    chatBody.appendChild(typingEl);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Find reply
+    const lowerQ = question.toLowerCase();
+    let reply = "🤖 I'm not sure how to answer that yet.";
+    for (const key in responses) {
+      if (lowerQ.includes(key)) {
+        reply = responses[key];
+        break;
+      }
+    }
+
+    // Delay bot reply
+    setTimeout(() => {
+      typingEl.remove();
+
+      const botMessage = document.createElement("div");
+      botMessage.className = "bot-message";
+      botMessage.textContent = reply;
+      chatBody.appendChild(botMessage);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 1000); // 1s delay
   }
+
+  // Close chatbot when clicking outside
+  window.addEventListener("click", function (e) {
+    if (
+      chatContainer.classList.contains("show") &&
+      !chatContainer.contains(e.target) &&
+      !openBtn.contains(e.target)
+    ) {
+      closeChat();
+    }
+  });
 });
